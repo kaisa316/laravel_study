@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\StudyService;
 use Illuminate\Support\ServiceProvider;
 
 class StudyServiceProvider extends ServiceProvider
@@ -14,6 +15,9 @@ class StudyServiceProvider extends ServiceProvider
     public function register()
     {
         //
+        $this->app->bind(StudyService::class,function($app){
+            return new StudyService();
+        });
     }
 
     /**
