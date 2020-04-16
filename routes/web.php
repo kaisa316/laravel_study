@@ -31,9 +31,10 @@ Route::get('/study_param/{id}/{name}', function ($id,$name) {
     return $id.$name;
 });
 
+//中间件的使用
 Route::get('/middleware/', function () {
-    return 'successed';
-})->middleware('checkage');
+    return 'hello，中间件';
+})->middleware('checkage:党员');
 
 //命名route
 Route::get('/study_named', function () {
