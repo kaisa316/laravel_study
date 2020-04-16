@@ -17,16 +17,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home', function () {
+    return 'welcome to home';
+});
 
 //study
 Route::get('/study', function (StudyService $study) {
     $echo_name = $study->echoName();
     return $echo_name;
 });
-Route::get('/study_param/{id}/{name}', function ($id,$name) {
 
+Route::get('/study_param/{id}/{name}', function ($id,$name) {
     return $id.$name;
 });
+
+Route::get('/middleware/', function () {
+    return 'successed';
+})->middleware('checkage');
 
 //命名route
 Route::get('/study_named', function () {
