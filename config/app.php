@@ -178,6 +178,8 @@ return [
         
         //自定义的provider
         App\Providers\StudyServiceProvider::class,
+        Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,//ide helper
+
 
     ],
 

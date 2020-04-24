@@ -1,7 +1,9 @@
 <?php
 
 use App\Services\StudyService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\URL;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,8 +19,18 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/home', function () {
-    return 'welcome to home';
+Route::get('/home', function (Request $request) {
+    $request->addd(); 
+    $s = 'src%253Dcar_app%2526uid%253D1590210120';
+    $ss =  urldecode($s) ;
+    $sss = urldecode($ss);
+    $rtn = [
+        'raw'=>$s,
+        'first_decode'=>$ss,
+        'second_decode'=>$sss,
+    ];
+    return $rtn;
+    // return 'welcome to home';
 });
 
 //study
@@ -46,4 +58,20 @@ Route::get('/study_named', function () {
 Route::get('/profile_test', function () {
     return redirect()->route('profile');
 });
+
+
+Route::get('url_list','StudyController@get_list');
+
+Route::get('url_test',function(){
+    //通过controller的method反向查询对应的route 
+    return action('StudyController@get_list');
+});
+
+Route::get('url_sign',function(){
+    return URL::signedRoute('url_list');
+});
+
+//validate 验证
+Route::get('check','StudyController@check') ;
+
 
