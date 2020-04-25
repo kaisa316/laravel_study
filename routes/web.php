@@ -71,7 +71,5 @@ Route::get('url_sign',function(){
     return URL::signedRoute('url_list');
 });
 
-//validate 验证
-Route::get('check','StudyController@check') ;
 
 

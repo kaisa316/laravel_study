@@ -13,12 +13,9 @@ class StudyController extends Controller
 
     public function check(Request $request) {
         $validatedData = $request->validate([
-            'title' => 'required|unique:posts|max:255',
-            'body' => 'required',
+            'mobile' => 'required',
         ]);
-        return 'xx';
-        $this->validate_apply($request);
-        return 'store 成功';
+        return 'check 成功';
     }
 
     protected function validate_apply(Request $request) {
