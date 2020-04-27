@@ -33,11 +33,12 @@ class ValidateController extends Controller
      */
     public function obj_check(Request $request) {
         $rules = [//校验规则
-            'mobile' => 'required',
+            'mobile' => 'required|digits:11',
             'name' => 'required',
         ];
         $error_msg = [//校验不通过，错误信息
             'mobile.required' => '手机号必填',
+            'mobile.digits' => '手机号长度不正确',
             'name.required' => '姓名必填',
         ];
         $input_data = [//要校验的数据
