@@ -11,12 +11,14 @@ class StudyController extends Controller
         return 'hello,study controller';
     }
 
-    public function check(Request $request) {
+    public function simple_check(Request $request) {
         $validatedData = $request->validate([
             'mobile' => 'required',
         ]);
         return 'check 成功';
     }
+
+    
 
     protected function validate_apply(Request $request) {
 		$rules = [

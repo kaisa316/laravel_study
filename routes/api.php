@@ -20,4 +20,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 ####################以下为 自己添加 ########################
 //validate 验证
-Route::post('check','StudyController@check') ;
+Route::post('simple_check','StudyController@simple_check') ;
+Route::get('complex_check','ValidateController@complex_check') ;
