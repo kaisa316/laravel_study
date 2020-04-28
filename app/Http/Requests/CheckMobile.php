@@ -24,7 +24,7 @@ class CheckMobile extends FormRequest
     public function rules()
     {
         return [
-            'mobile' => 'required',
+            'mobile' => 'required|digits:11',
         ];
     }
     
@@ -37,6 +37,7 @@ class CheckMobile extends FormRequest
     {
         return [
             'mobile.required' =>'手机号必填',
+            'mobile.digits' =>'长度不合法',
         ];   
     }
     
