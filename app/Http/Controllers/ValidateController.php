@@ -26,7 +26,12 @@ class ValidateController extends ApiBaseController
         // Retrieve the validated input data...
         $order_service = new \App\Services\OrderService();
         $order_service->get_order_by_id($request);
-        return 'check 成功';
+        $result = [
+            'code'=>200,
+            'msg'=>'check 成功',
+            'data'=>[],
+        ] ;
+        return $result;
     }
 
     /**
