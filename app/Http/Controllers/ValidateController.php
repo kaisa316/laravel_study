@@ -27,9 +27,9 @@ class ValidateController extends ApiBaseController
         $order_service = new \App\Services\OrderService();
         $order_service->get_order_by_id($request);
         $result = [
-            'code'=>200,
-            'msg'=>'check 成功',
-            'data'=>[],
+            'code' => 200,
+            'msg'  => 'check 成功',
+            'data' => [],
         ] ;
         return $result;
     }
@@ -41,17 +41,17 @@ class ValidateController extends ApiBaseController
      */
     public function obj_check(Request $request) {
         $rules = [//校验规则
-            'mobile' => 'bail|required|digits:11',//必填且为11为数字
-            'name' => 'required',
+            'mobile' => 'bail|required|digits:11',   //必填且为11为数字
+            'name'   => 'required',
         ];
         $error_msg = [//错误信息,校验不通过
             'mobile.required' => '手机号必填',
-            'mobile.digits' => '手机号长度不正确',
-            'name.required' => '姓名必填',
+            'mobile.digits'   => '手机号长度不正确',
+            'name.required'   => '姓名必填',
         ];
         $input_data = [//要校验的数据
             'mobile' => $request->input('mobile'),
-            'name'=> 'zhangsan',
+            'name'   => 'zhangsan',
         ];
         // $input_data = $request->all();
         $validate = Validator::make($input_data,$rules,$error_msg);
