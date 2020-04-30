@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
-class ValidateController extends Controller
+class ValidateController extends ApiBaseController
 {
     //简单的验证 
     public function simple_check(Request $request) {

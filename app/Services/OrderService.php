@@ -1,13 +1,14 @@
 <?php 
 namespace App\Services;
 
+use App\Exceptions\CheckException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
 class OrderService {
-    
 
+    
     public function get_order_by_id(Request $request) {
         //从数据库中获取数据
         $order_data = [
@@ -22,6 +23,7 @@ class OrderService {
         if($request->input('name') != 'zhangsan') {
             $validator->errors()->add('name',"name校验不通过，你不是张三");
             throw new ValidationException($validator);
+            // throw new CheckException("name校验不通过，你不是张三",300); 
         }
     }
 
