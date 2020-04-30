@@ -52,9 +52,9 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         //custom begin
-        // return $this->custom_render($request,$exception);
+        return $this->custom_render($request,$exception);
         //custom end
-        return parent::render($request, $exception);
+        // return parent::render($request, $exception);
     }
 
     /**
@@ -66,7 +66,7 @@ class Handler extends ExceptionHandler
      */
     protected function custom_render($request, Throwable $exception) {
         $output = [
-            'code'=>-1,
+            'code'=> $exception->getCode(),
             'msg'=>$exception->getMessage(),
             'data'=>[],
         ] ;
