@@ -85,7 +85,7 @@ class Handler extends ExceptionHandler
     {
         $errors = $exception->errors();
         foreach ($errors as $key => $value) {
-            $msg = $value[0];
+            $msg = $value[0];//获取第一条错误信息
         }
         $output = [
             'code'=>-1,
