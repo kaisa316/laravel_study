@@ -1,5 +1,7 @@
 <?php
 
+use App\Services\BaseHorse;
+use App\Services\WhiteHorse;
 use Illuminate\Http\Request;
 use App\Services\StudyService;
 use Illuminate\Support\Facades\Log;
@@ -36,8 +38,12 @@ Route::get('/home', function (Request $request) {
 
 //study
 Route::get('/study', function (StudyService $study) {
-    $echo_name = $study->echoName();
-    return $echo_name;
+    return $study->echoName(); 
+});
+
+//horse
+Route::get('/horse', function (BaseHorse $horse) {
+    return $horse->get_color(); 
 });
 
 Route::get('/study_param/{id}/{name}', function ($id,$name) {

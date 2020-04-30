@@ -1,6 +1,5 @@
 <?php
 
-
 return [
 
     /*
@@ -178,6 +177,7 @@ return [
         
         //自定义的provider
         App\Providers\StudyServiceProvider::class,
+        \App\Providers\HorseProvider::class,
         Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider::class,//ide helper
 
 
