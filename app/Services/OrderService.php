@@ -12,8 +12,8 @@ class OrderService {
     public function get_order_by_id(Request $request) {
         //从数据库中获取数据
         $order_data = [
-            'orderid'=>123,
-            'mobile'=>'15866667777',
+            'orderid' => 123,
+            'mobile'  => '15866667777',
         ];
         $validator = Validator::make([],[]);
         if($request->input('mobile') != $order_data['mobile']) {
@@ -21,10 +21,6 @@ class OrderService {
             throw new ValidationException($validator);
         }
         if($request->input('name') != 'zhangsan') {
-            /*
-            $validator->errors()->add('name',"name校验不通过，你不是张三");
-            throw new ValidationException($validator);
-            */
             throw new CheckException("name校验不通过，你不是张三,from service",-300); 
         }
     }

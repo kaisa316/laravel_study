@@ -37,7 +37,7 @@ class Handler extends ExceptionHandler
      */
     public function report(Throwable $exception)
     {
-        parent::report($exception);
+        parent:: report($exception);
     }
 
     /**
@@ -52,9 +52,11 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         //custom begin
-        return $this->custom_render($request,$exception);
+        if($exception instanceof CheckException) {
+            return $this->custom_render($request, $exception);
+        }
         //custom end
-        // return parent::render($request, $exception);
+        return parent::render($request, $exception);
     }
 
     /**
@@ -65,16 +67,17 @@ class Handler extends ExceptionHandler
      * @return void
      */
     protected function custom_render($request, Throwable $exception) {
-        $output = [
-            'code'=> $exception->getCode(),
-            'msg'=>$exception->getMessage(),
-            'data'=>[],
+       $output = [
+            'code' => $exception->getCode(),
+            'msg'  => $exception->getMessage(),
+            'data' => [],
         ] ;
         return response()->json($output,422);
     }
 
     /**
      * @override
+     * 覆盖原有的方式，定制输出格式 kaisa316
      * Convert a validation exception into a JSON response.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -85,12 +88,12 @@ class Handler extends ExceptionHandler
     {
         $errors = $exception->errors();
         foreach ($errors as $key => $value) {
-            $msg = $value[0];//获取第一条错误信息
+            $msg = $value[0];  //获取第一条错误信息
         }
         $output = [
-            'code'=>-1,
-            'msg'=>$msg,
-            'data'=>[],
+            'code' => -1,
+            'msg'  => $msg,
+            'data' => [],
         ] ;
         return response()->json($output, $exception->status);
     }
