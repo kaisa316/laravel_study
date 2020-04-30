@@ -1,9 +1,10 @@
 <?php
 
-use App\Services\StudyService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use App\Services\StudyService;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,5 +72,10 @@ Route::get('url_sign',function(){
     return URL::signedRoute('url_list');
 });
 
+Route::get('log', function () {
+    Log::info('hello,log');
+    Log::warning('hello,log,warning');
+    return 'log is ok';
+});
 
 
